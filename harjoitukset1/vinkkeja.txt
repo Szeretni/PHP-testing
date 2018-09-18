@@ -1,0 +1,7 @@
+<?php
+$luku1 = rand(1,5);
+echo $luku1
+echo "<img src='1.jpg'>";
+?>
+
+tehtävä 5 staattinen, niin muistaa värin jokaisella kutsukerralla
