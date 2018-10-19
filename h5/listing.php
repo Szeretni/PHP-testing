@@ -5,6 +5,7 @@ tr:nth-child(1) {background: #ffeedd}
 </style>
 
 <?php
+session_start();
 include('navbar.php');
 // listing.php
  

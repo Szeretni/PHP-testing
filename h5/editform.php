@@ -1,10 +1,25 @@
 <?php
+session_start();
 include('navbar.php');
 // editform.php
  
 require_once ("/home/L2912/php-dbconfig/db-init.php");
- 
-$tunnus = isset($_GET['id']) ? $_GET['id'] : '';
+
+if (!isset($_SESSION['app2_islogged']) || $_SESSION['app2_islogged'] !== true) {
+    header("Location: http://" . $_SERVER['HTTP_HOST']
+                               . dirname($_SERVER['PHP_SELF']) . '/'
+                               . "t4.php");
+    
+    exit;
+    }
+
+$tunnus = '';
+if($_SESSION['uid'] != 'admin'){
+    $tunnus = $_SESSION['uid']; 
+    echo "<h1>You were redirected to edit your own account!</h1>";
+} if($_SESSION['uid'] == 'admin'){
+    $tunnus = isset($_GET['id']) ? $_GET['id'] : '';
+}
      
 $stmt = haeHenkilo($db, $tunnus);
 teelomake($stmt);
@@ -52,13 +67,17 @@ function teelomake($stmt) {
   <td align='right' bgcolor='#ffeedd'>Email</td>
   <td bgcolor='#dddddd'><input type='text' name='email' size='30' value='{$row['email']}'></td>
 </tr>
+<tr valign='top'>
+  <td align='right' bgcolor='#ffeedd'>Password</td>
+  <td bgcolor='#dddddd'><input type='text' name='password' size='30' value='']}'></td>
+</tr>
 </table>
-<input type='submit' name='action' value='Tallenna muutokset' onclick="javascript: return confirm('Hyväksy muutokset?')">
+<input type='submit' name='action' value='Tallenna muutokset' onclick="javascript: return confirm('Hyvï¿½ksy muutokset?')">
 </form>
 
 <form method='post' action='poista.php'>
 <input type='hidden' name='tunnus' value='{$row['tunnus']}'>
-<input type='submit' name='action' value='Poista' onclick="javascript: return confirm('Hyväksy poisto?')">
+<input type='submit' name='action' value='Poista' onclick="javascript: return confirm('Hyvï¿½ksy poisto?')">
 </form>
 EOLomake;
 

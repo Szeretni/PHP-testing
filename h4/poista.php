@@ -1,4 +1,5 @@
 <?php
+include('navbar.php');
 // poista.php
  
 require_once ("/home/L2912/php-dbconfig/db-init.php");

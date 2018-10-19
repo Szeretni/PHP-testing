@@ -1,0 +1,48 @@
+Tämän kansion tiedostojen käyttämisestä:
+
+1) Katso tiedostoa php-passwd-lib-init-db.txt ja kopioi se itsellesi sopivaan
+   paikkaan S:-asemalle (ei public_html:n alle) php-tarkenteiseksi tiedostoksi.
+   Kopioi esim. S:aseman juurikansioon.
+
+2) Muuta tiedoston php-passwd-lib-init-db.php require_once-alkuiset
+   rivit vastaamaan sinun konfiguraatiota.
+
+3) Kopio PasswordLib.phar-tiedosto paikkaan, johon sen määrittelit kohdassa 2)
+   osoittamaan.
+
+4) Muuta tiedoston php-passwd-lib-init-db.php käyttäjätunnukset ja salasanat
+   haluamiksesi
+
+5) Luo käyttäjätunnustaulu php_pwlib_users salasanoineen käyttämällä edellä
+   muokkaamaasi php-passwd-lib-init-db.php-skriptiä ajamalla se Puttyllä
+   student-palvelimen komentoriviltä, jos tallensit skriptin S:aseman
+   juurikansioon, komenna
+
+   cd
+   php php-passwd-lib-init-db.php
+
+6) Kopioi muut tämän kansion PHP-tiedostot sopivaksi katsomaasi paikkaan
+   public_html-kansion alle ja testaa.
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- --
+Teoriaa pohjalle/Password Hashing
+
+1) Lue tästä perusteet salasanojen tiivistämisestä
+   https://crackstation.net/hashing-security.htm
+
+2) Totea tästä, millaista järjestelyä sinun PHP-ympäristössäsi kannattaa käyttää:
+   (Alkaa kohdasta "Face It, Cryptography is hard.")
+   http://stackoverflow.com/questions/4795385/how-do-you-use-bcrypt-for-hashing-passwords-in-php
+
+3) Lue tarvittaessa lisää Bcryptistä <https://en.wikipedia.org/wiki/Bcrypt>, joka pohjautuu Blowfish-
+   algoritmiin https://en.wikipedia.org/wiki/Blowfish_(cipher)
+
+
+4) Jos haluat selvittää itsellesi tarkemmin rainbow tables -käsitettä:
+   https://stichintime.wordpress.com/2009/04/09/rainbow-tables-part-1-introduction/ 
+
+5) Student-palvelimella pitää toistaiseksi käyttää seuraavaa ratkaisua:
+   http://student.labranet.jamk.fi/~ara/ttms0900/06-2016-vko-41/session-based-login/database/
+
+
+
